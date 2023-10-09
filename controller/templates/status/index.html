@@ -1,0 +1,40 @@
+
+{% extends 'base.html' %}
+
+{% block header %}
+    <h1>{% block title %}Status{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+<table>
+    <tr>
+        <td>Power:</td>
+        <td>{{ power }}</td>
+    </tr>
+    <tr>
+        <td>Tank Level:</td>
+        <td>{{ tanklevel }}%</td>
+    </tr>
+    <tr>
+        <td colspan="4">
+            &nbsp;
+        </td>
+    </tr>
+    <tr>
+        <td>Controllers:</td>
+        <td>{{ controllers[0] }}</td>
+        <td>Ports Enabled:</td>
+        <td>{{ enabled_ports[0] }}/{{ ports[0] }}</td>
+    </tr>
+</table>
+<hr />
+<h1>Admin</h1>
+<table>
+    <tr>
+        <td><a href="/">Status</a></td>
+        <td><a href="/sched">Schedules</a></td>
+        <td><a href="/controller">Controllers</a></td>
+        <td><a href="/port">Ports</a></td>
+    </tr>
+</table>
+{% endblock %}

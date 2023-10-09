@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block header %}
+    <h1>{% block title %}Schedule{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+    <table>
+        <tr>
+            <th>Day</th>
+            <td></td>
+            <th>Hour</th>
+            <td></td>
+            <th>Minute</th>
+            <td></td>
+            <th>Controller</th>
+            <td></td>
+            <th>Port</th>
+            <td></td>
+            <th>On/Off</th>
+        </tr>
+        {% for sched in scheds %}
+            <tr>
+                <td align="center">{{ sched["day_name"] }}</td>
+            <td></td>
+                <td align="center">{{ sched["hour"] }}</td>
+            <td></td>
+                <td align="center">{{ sched["minute"] }}</td>
+            <td></td>
+                <td align="center">{{ sched["controller_name"] }}</td>
+            <td></td>
+                {% if sched["enabled"] == 1 %}
+                    <td align="center">
+                {% else %}
+                    <td align="center" bgcolor="yellow" >
+                {% endif %}
+                    {{ sched["port_name"] }}
+                </td>
+            <td></td>
+                {% if sched["state"] == 0 %}
+                    <td align="center">
+                        OFF
+                {% else %}
+                    <td align="center" bgcolor="red">
+                        ON
+                {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+<hr />
+<h1>Admin</h1>
+<table>
+    <tr>
+        <td><a href="/">Status</a></td>
+        <td><a href="/sched">Schedules</a></td>
+        <td><a href="/controller">Controllers</a></td>
+        <td><a href="/port">Ports</a></td>
+    </tr>
+</table>
+{% endblock %}

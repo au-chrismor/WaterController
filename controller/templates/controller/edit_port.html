@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block header %}
+    <h1>{% block title %}Ports on Controller {{ port["controller_id"] }}{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+<form method="POST">
+    <table>
+        <tr>
+            <th>ID</th>
+            <td></td>
+            <th>Port Number</th>
+            <td></td>
+            <th>Port_Name</th>
+            <td></td>
+            <th>Enabled</th>
+        </tr>
+        <tr>
+            <td align="center">{{ port["port_id"] }}</td>
+            <td>
+                <input type="hidden" name="controller" value="{{ port["controller_id"] }}">
+                <input type="hidden" name="port" value="{{ port["port_id"] }}">
+            </td>
+            <td align="center">{{ port["port_number"] }}</td>
+            <td></td>
+            <td align="center"><input name="name" value="{{ port["port_name"] }}" /></td>
+            <td></td>
+            {% if port["enabled"] == 1 %}
+                <td align="center"><input type="checkbox" name="enabled" checked></td>
+            {% else %}
+                <td align="center"><input type="checkbox" name="enabled"></td>
+            {% endif %}
+            <td><input type="submit" value="Save"></td>
+        </tr>
+    </table>
+</form>
+<hr />
+<h1>Admin</h1>
+<table>
+    <tr>
+        <td><a href="/">Status</a></td>
+        <td><a href="/sched">Schedules</a></td>
+        <td><a href="/controller">Controllers</a></td>
+        <td><a href="/port">Ports</a></td>
+    </tr>
+</table>
+{% endblock %}

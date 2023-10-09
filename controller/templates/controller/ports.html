@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block header %}
+    <h1>{% block title %}Ports{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+    <table>
+        <tr>
+            <th>ID</th>
+            <td></td>
+            <th>Port Number</th>
+            <td></td>
+            <th>Port_Name</th>
+            <td></td>
+            <th>Enabled</th>
+        </tr>
+        {% for port in ports %}
+            <tr>
+                <td align="center">{{ port["port_id"] }}</td>
+                <td></td>
+                <td align="center">{{ port["port_number"] }}</td>
+                <td></td>
+                <td align="center"><a href="/controller/{{ port["controller_id"] }}/port/{{ port["port_id"] }}">{{ port["port_name"] }}</a></td>
+                <td></td>
+                {% if port["enabled"] == 1 %}
+                        <td align="center">YES</td>
+                {% else %}
+                <td align="center" bgcolor="yellow">NO</td>
+                {% endif %}
+
+            </tr>
+        {% endfor %}
+    </table>
+<hr />
+<h1>Admin</h1>
+<table>
+    <tr>
+        <td><a href="/">Status</a></td>
+        <td><a href="/sched">Schedules</a></td>
+        <td><a href="/controller">Controllers</a></td>
+        <td><a href="/port">Ports</a></td>
+    </tr>
+</table>
+{% endblock %}

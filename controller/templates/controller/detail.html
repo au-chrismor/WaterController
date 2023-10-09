@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block header %}
+    <h1>{% block title %}Schedule{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+    <table>
+        <tr>
+            <th>ID</th>
+            <td></td>
+            <th>Name</th>
+            <td></td>
+            <th>Enabled</th>
+            <td></td>
+            <th>Ports</th>
+        </tr>
+        <tr>
+            <td align="center">{{ controller["controller_id"] }}</td>
+            <td></td>
+            <td align="center">{{ controller["controller_name"] }}</td>
+            <td></td>
+                {% if controller["enabled"] == 1 %}
+                    <td align="center">YES</td>
+                {% else %}
+                    <td align="center" bgcolor="yellow" >NO</td>
+                {% endif %}
+            <td></td>
+            <td align="center"><a href="/controller/{{ controller["controller_id"] }}/port">{{ port_count[0] }}</a></td>
+
+        </tr>
+    </table>
+<hr />
+<h1>Admin</h1>
+<table>
+    <tr>
+        <td><a href="/">Status</a></td>
+        <td><a href="/sched">Schedules</a></td>
+        <td><a href="/controller">Controllers</a></td>
+        <td><a href="/port">Ports</a></td>
+    </tr>
+</table>
+{% endblock %}
