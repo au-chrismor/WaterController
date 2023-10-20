@@ -16,6 +16,16 @@
         <td>{{ tanklevel }}%</td>
     </tr>
     <tr>
+        <td>Message Queue:</td>
+        <td>
+            {% if msg_queue == 1%}
+                Connected
+            {% else %}
+                Not Connected
+            {% endif %}
+        </td>
+    </tr>
+    <tr>
         <td colspan="4">
             &nbsp;
         </td>
