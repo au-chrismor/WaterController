@@ -2,3 +2,6 @@
 instance
 venv
 __pycache__
+.terraform
+*.hcl
+
